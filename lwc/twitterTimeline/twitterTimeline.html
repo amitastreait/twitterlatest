@@ -1,0 +1,15 @@
+<template>
+    <div class="slds-m-around_small" >
+        <lightning-card title="Your Timeline" icon-name="custom:custom23">
+            <template if:true={timelines}>
+                <template for:each={timelines} for:item="item">
+                    <p key={item.id_str} class="slds-m-around_small">
+                        <lightning-formatted-rich-text value={item.text} >
+
+                        </lightning-formatted-rich-text>
+                    </p>
+                </template>
+            </template>
+        </lightning-card>
+    </div>
+</template>

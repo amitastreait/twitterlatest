@@ -1,0 +1,24 @@
+<template>
+    <lightning-layout multiple-rows="true">
+        <lightning-layout-item padding="around-small" size="4">
+            <lightning-input 
+                value={searchval}
+                label="Search By Name"
+                placeholder="Search Follower by Name"
+                onchange={handleChange} >
+            </lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="4">
+            <lightning-input 
+                value={locationSearchVal}
+                label="Search By Location"
+                placeholder="Search Follower by Location"
+                onchange={handleLocationChange} >
+            </lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="4">
+
+        </lightning-layout-item>
+    </lightning-layout>
+    
+</template>

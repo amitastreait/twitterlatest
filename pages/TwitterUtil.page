@@ -1,0 +1,36 @@
+<apex:page tabStyle="Twitter__tab" controller="TwitterController" action="{!checkIfAlreadyAuthenticated}">
+  <apex:slds />
+  <apex:sectionHeader title="Twitter API" subtitle="Connect with Twitter API using oAuth 1.o" />
+  <apex:pagemessages ></apex:pagemessages>
+  <apex:actionstatus id="statusProcessing">
+        <apex:facet name="start">
+            <div class="waitingSearchDiv" id="el_loading" style="background-color: #fbfbfb; height:100%;opacity:0.65;width:100%;">
+                <div class="waitingHolder" style="top: 100px; width: 91px;">
+                    <img class="waitingImage" src="{!$Resource.Loading}" title="Please Wait..." />
+                    <span class="waitingDescription">Loading...</span>
+                </div>
+            </div>
+        </apex:facet>
+    </apex:actionstatus>
+  <apex:form id="theForm" >
+      <apex:pageblock rendered="{!!isAuthenticated}" >
+          <apex:pageblockButtons location="top" >
+              <apex:commandButton value="Connect with Twitter" action="{!doAuth}" 
+                  styleClass="slds-button slds-button_brand" status="statusProcessing" reRender="theForm" />
+              <apex:commandButton value="Complete Authorization" action="{!dofetchAccessToken}" 
+                  styleClass="slds-button slds-button_brand" status="statusProcessing" reRender="theForm" />
+          </apex:pageblockButtons>
+      </apex:pageblock>
+      <apex:pageblock rendered="{!isAuthenticated}"> 
+          You are (already)/authenticated with Twitter Account. <br/>
+          If you have recently changed the Twitter password OR revoked the access. To Provide the access again Use below <strong>"Re Connect with Twitter"</strong> button 
+          and after that click <strong>"Complete ReAuthorization"</strong> button.
+          <apex:pageblockButtons location="bottom" >
+              <apex:commandButton value="Re Connect with Twitter" action="{!doAuth}" 
+                  styleClass="slds-button slds-button_brand" status="statusProcessing" reRender="theForm" />
+              <apex:commandButton value="Complete ReAuthorization" action="{!dofetchAccessToken}" 
+                  styleClass="slds-button slds-button_brand" status="statusProcessing" reRender="theForm" />
+          </apex:pageblockButtons>
+      </apex:pageblock>
+  </apex:form>
+</apex:page>

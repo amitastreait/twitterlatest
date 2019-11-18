@@ -1,0 +1,37 @@
+<template>
+    <template if:true={follower}>
+        <lightning-card title={follower.Name} icon-name="action:following">
+            <div class="slds-m-around_small">
+                <lightning-layout multiple-rows="true">
+                    <lightning-layout-item padding="around-small" size="3">
+                        <img src={follower.Profile__c} width="100" height="100" />
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="9">
+                        <p>
+                            <strong>Twitter Handle : </strong> {follower.Twitter_Handle__c} <br />
+                            <strong>Description : </strong> {follower.Description__c} <br />
+                            <strong>Location : </strong> {follower.Location__c} <br />
+                            <strong>Total Followers : </strong> {follower.followers_count__c}
+                        </p>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>
+            <lightning-button-stateful 
+                label-when-off="Follow" 
+                label-when-on="Following" 
+                label-when-hover="Unfollow"
+                icon-name-when-off="utility:add" 
+                icon-name-when-on="utility:check" 
+                icon-name-when-hover="utility:close"
+                variant={variant}
+                state={state}
+                selected={isSelected}
+                onclick={handleClick}
+                slot="actions"
+            >
+            </lightning-button-stateful> &nbsp; &nbsp;
+            <!--<lightning-button label="Private Message" variant="brand" slot="actions">
+            </lightning-button> -->
+        </lightning-card>
+    </template>
+</template>

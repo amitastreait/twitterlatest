@@ -1,0 +1,26 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global"
+                controller="TwitterFollowersMap">
+    <!-- attributes -->
+    <aura:attribute name="mapMarkers" type="Object"/>
+    <aura:attribute name="markersTitle" type="String" />
+    <aura:attribute name="zoomLevel" type="Integer" />
+    <aura:attribute name="center" type="Object"/>
+    <aura:attribute name="listView" type="String" default="visible" />
+    <!-- handlers-->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit }"/>
+    
+    <!-- the map component -->
+    <lightning:card variant="Narrow" title="Twitter Followers Map" 
+                    iconName="custom:custom82" >
+        
+        <aura:if isTrue="{!not(empty(v.mapMarkers))}" >
+            <lightning:map 
+                           mapMarkers="{! v.mapMarkers }"
+                           markersTitle="{!v.markersTitle}"
+                           zoomLevel="{!v.zoomLevel}"
+                           />
+        </aura:if>
+    </lightning:card>
+    
+    
+</aura:component>
